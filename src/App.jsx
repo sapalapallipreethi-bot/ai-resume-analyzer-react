@@ -1,58 +1,36 @@
 import "./App.css";
 import { useState } from "react";
 
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import ScoreCard from "./components/ScoreCard";
-import Suggestions from "./components/Suggestions";
-
 function App() {
-  const [fileName, setFileName] = useState("No file selected");
-  const [score, setScore] = useState("");
-
   return (
     <>
-      <Navbar />
+      <header className="navbar">
+        <h2>🤖 AI Resume Analyzer</h2>
 
-      <Hero />
+        <nav>
+          <a href="#">Home</a>
+          <a href="#">Features</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </nav>
+      </header>
 
-      <div className="hero">
-        <button>Upload Resume</button>
-<input
+      <section className="hero">
+        <div>
+          <h1>Analyze Your Resume with AI</h1>
+
+          <p>
+            Get your ATS score, skill analysis and AI suggestions in seconds.
+          </p>
+
+          <button>Upload Resume</button>
+          <input
   type="file"
   accept=".pdf,.doc,.docx"
-  onChange={(e) => {
-    if (e.target.files.length > 0) {
-      setFileName(e.target.files[0].name);
-      setScore(85);
-    }
-  }}
+  style={{ marginTop: "20px" }}
 />
-
-<p>{fileName}</p>
-        <br />
-        <br />
-
-        <input
-          type="file"
-          accept=".pdf,.doc,.docx"
-          onChange={(e) => {
-            if (e.target.files.length > 0) {
-              setFileName(e.target.files[0].name);
-              setScore(85);
-            }
-          }}
-        />
-
-        <p>{fileName}</p>
-
-        {score && (
-          <>
-            <ScoreCard score={score} />
-            <Suggestions />
-          </>
-        )}
-      </div>
+        </div>
+      </section>
     </>
   );
 }
