@@ -1,7 +1,10 @@
 import "./App.css";
 import { useState } from "react";
 
+
 function App() {
+  const [fileName, setFileName] = useState("No file selected");
+  const [score, setScore] = useState("");
   return (
     <>
       <header className="navbar">
@@ -24,11 +27,35 @@ function App() {
           </p>
 
           <button>Upload Resume</button>
-          <input
+  <input
   type="file"
   accept=".pdf,.doc,.docx"
-  style={{ marginTop: "20px" }}
+  onChange={(e) => {
+  if (e.target.files.length > 0) {
+    setFileName(e.target.files[0].name);
+    setScore(85);
+  }
+}}
 />
+<p>{fileName}</p>
+{score && (
+  <div className="score-card">
+    {score && (
+  <div className="suggestions">
+    <h3>AI Suggestions</h3>
+
+    <ul>
+      <li>✅ Add more technical skills.</li>
+      <li>✅ Include internship experience.</li>
+      <li>✅ Improve ATS keywords.</li>
+      <li>✅ Add GitHub and LinkedIn links.</li>
+    </ul>
+  </div>
+)}
+    <h2>ATS Score</h2>
+    <h1>{score}%</h1>
+  </div>
+)}
         </div>
       </section>
     </>
